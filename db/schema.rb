@@ -18,7 +18,8 @@ ActiveRecord::Schema.define(version: 2020_08_25_113038) do
   create_table "addresses", force: :cascade do |t|
     t.string "street"
     t.string "town"
-    t.string "zipcode"
+    t.integer "zipcode" , :limit => 5 #By default SQL String limit 255 character 
+    #Ex:- :limit => 40
     t.string "state"
     t.string "country"
     t.datetime "created_at", precision: 6, null: false
@@ -26,7 +27,7 @@ ActiveRecord::Schema.define(version: 2020_08_25_113038) do
   end
 
   create_table "emails", force: :cascade do |t|
-    t.string "email_address"
+    t.string "email_address", :format => /@/
     t.text "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -34,10 +35,11 @@ ActiveRecord::Schema.define(version: 2020_08_25_113038) do
 
   create_table "people", force: :cascade do |t|
     t.string "saluation"
-    t.string "first_name"
+    t.string "first_name" require
     t.string "middle_name"
-    t.string "last_name"
-    t.string "ssn"
+    t.string "last_name" require
+    t.integer "ssn" , :limit => 9 #By default SQL String limit 255 character 
+    #Ex:- :limit => 40
     t.date "date_of_birth"
     t.text "comment"
     t.datetime "created_at", precision: 6, null: false
@@ -45,7 +47,7 @@ ActiveRecord::Schema.define(version: 2020_08_25_113038) do
   end
 
   create_table "phones", force: :cascade do |t|
-    t.string "phone_number"
+    t.string "phone_number" require
     t.text "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
