@@ -13,7 +13,8 @@
 
   <div class="field">
     <%= form.label :saluation %>
-    <%= form.text_field :saluation %>
+    <%= form.select :salutation, [["Mrs.", "Mrs."],["Ms.", "Ms."],["Mr.", "Mr."]] %>
+
   </div>
 
   <div class="field">
@@ -38,7 +39,7 @@
 
   <div class="field">
     <%= form.label :date_of_birth %>
-    <%= form.date_select :date_of_birth %>
+    <%= form.date_select :date_of_birth, start_year: 1940 %>
   </div>
 
   <div class="field">
