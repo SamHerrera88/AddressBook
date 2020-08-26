@@ -15,21 +15,12 @@
   </thead>
 
   <tbody>
-    <% @addresses.each do |address| %>
-      <tr>
-        <td><%= address.street %></td>
-        <td><%= address.town %></td>
-        <td><%= address.zipcode %></td>
-        <td><%= address.state %></td>
-        <td><%= address.country %></td>
-        <td><%= link_to 'Show', address %></td>
-        <td><%= link_to 'Edit', edit_address_path(address) %></td>
-        <td><%= link_to 'Destroy', address, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <% @person.addresses.each do |address| %>
+      <%= render 'addresses/address', address: address %>
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Address', new_address_path %>
+<%= link_to 'New Address', new_person_address_path(@person) %>

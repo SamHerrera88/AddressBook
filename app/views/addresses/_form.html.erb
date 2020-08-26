@@ -1,4 +1,4 @@
-<%= form_with(model: address, local: true) do |form| %>
+<%= form_with(model: address, local: true, url: [@person, address]) do |form| %>
   <% if address.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(address.errors.count, "error") %> prohibited this address from being saved:</h2>
@@ -34,6 +34,10 @@
   <div class="field">
     <%= form.label :country %>
     <%= form.select :country, ISO3166::Country.all.sort %>
+
+  <div class="field">
+    <%= form.hidden_field :person_id, value: @person.id %>
+  </div>
 
 
   </div>

@@ -1,5 +1,11 @@
 <p id="notice"><%= notice %></p>
 
+<h1><%= "#{@person.firstname} #{@person.lastname}" %></h1>
+
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Back', people_path %>
+
+
 <p>
   <strong>Saluation:</strong>
   <%= @person.saluation %>
@@ -35,5 +41,4 @@
   <%= @person.comment %>
 </p>
 
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>
+<%= render 'addresses/index' %>
