@@ -5,11 +5,13 @@ RSpec.describe "emails/index", type: :view do
     assign(:emails, [
       Email.create!(
         email_address: "Email Address",
-        comment: "MyText"
+        comment: "MyText",
+        person: nil
       ),
       Email.create!(
         email_address: "Email Address",
-        comment: "MyText"
+        comment: "MyText",
+        person: nil
       )
     ])
   end
@@ -18,5 +20,7 @@ RSpec.describe "emails/index", type: :view do
     render
     assert_select "tr>td", text: "Email Address".to_s, count: 2
     assert_select "tr>td", text: "MyText".to_s, count: 2
+    assert_select "tr>td", text: nil.to_s, count: 2
+
   end
 end

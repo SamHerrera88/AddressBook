@@ -4,7 +4,8 @@ RSpec.describe "emails/show", type: :view do
   before(:each) do
     @email = assign(:email, Email.create!(
       email_address: "Email Address",
-      comment: "MyText"
+      comment: "MyText",
+      person: nil
     ))
   end
 
@@ -12,5 +13,7 @@ RSpec.describe "emails/show", type: :view do
     render
     expect(rendered).to match(/Email Address/)
     expect(rendered).to match(/MyText/)
+    expect(rendered).to match(//)
+
   end
 end

@@ -4,7 +4,8 @@ RSpec.describe "phones/show", type: :view do
   before(:each) do
     @phone = assign(:phone, Phone.create!(
       phone_number: "Phone Number",
-      comment: "MyText"
+      comment: "MyText",
+      person: nil
     ))
   end
 
@@ -12,5 +13,6 @@ RSpec.describe "phones/show", type: :view do
     render
     expect(rendered).to match(/Phone Number/)
     expect(rendered).to match(/MyText/)
+    expect(rendered).to match(//)
   end
 end

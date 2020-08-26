@@ -3,6 +3,7 @@ class CreateEmails < ActiveRecord::Migration[6.0]
     create_table :emails do |t|
       t.string :email_address
       t.text :comment
+      t.references :person, null: false, foreign_key: true
 
       t.timestamps
     end

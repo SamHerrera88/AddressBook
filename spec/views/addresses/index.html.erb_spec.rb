@@ -9,6 +9,7 @@ RSpec.describe "addresses/index", type: :view do
         zipcode: "Zipcode",
         state: "State",
         country: "Country"
+        person: nil
       ),
       Address.create!(
         street: "Street",
@@ -16,6 +17,7 @@ RSpec.describe "addresses/index", type: :view do
         zipcode: "Zipcode",
         state: "State",
         country: "Country"
+        person: nil
       )
     ])
   end
@@ -27,5 +29,6 @@ RSpec.describe "addresses/index", type: :view do
     assert_select "tr>td", text: "Zipcode".to_s, count: 2
     assert_select "tr>td", text: "State".to_s, count: 2
     assert_select "tr>td", text: "Country".to_s, count: 2
+    assert_select "tr>td", text: nil.to_s, count: 2
   end
 end

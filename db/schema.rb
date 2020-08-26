@@ -21,8 +21,10 @@ ActiveRecord::Schema.define(version: 2020_08_25_113038) do
     t.integer "zipcode"
     t.string "state"
     t.string "country"
+    t.bigint "person_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["person_id"], name: "index_addresses_on_person_id"
   end
 
   create_table "emails", force: :cascade do |t|

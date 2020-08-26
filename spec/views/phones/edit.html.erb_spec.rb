@@ -4,7 +4,8 @@ RSpec.describe "phones/edit", type: :view do
   before(:each) do
     @phone = assign(:phone, Phone.create!(
       phone_number: "MyString",
-      comment: "MyText"
+      comment: "MyText",
+      person: nil
     ))
   end
 
@@ -16,6 +17,9 @@ RSpec.describe "phones/edit", type: :view do
       assert_select "input[name=?]", "phone[phone_number]"
 
       assert_select "textarea[name=?]", "phone[comment]"
+
+      assert_select "input[name=?]", "phone[person_id]"
+
     end
   end
 end

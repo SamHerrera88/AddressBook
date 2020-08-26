@@ -8,6 +8,7 @@ RSpec.describe "addresses/edit", type: :view do
       zipcode: "MyString",
       state: "MyString",
       country: "MyString"
+      person: nil
     ))
   end
 
