@@ -26,6 +26,8 @@ gem 'jbuilder', '~> 2.7'
 # gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
+gem 'countries' 
+
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
@@ -41,7 +43,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rspec-rails', '~> 4.0.1'
-  gem 'countries' 
 end
 
 group :test do
