@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_25_113038) do
+ActiveRecord::Schema.define(version: 2020_08_25_151701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,19 +21,15 @@ ActiveRecord::Schema.define(version: 2020_08_25_113038) do
     t.integer "zipcode"
     t.string "state"
     t.string "country"
-    t.bigint "person_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["person_id"], name: "index_addresses_on_person_id"
   end
 
   create_table "emails", force: :cascade do |t|
     t.string "email_address"
     t.text "comment"
-    t.bigint "person_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["person_id"], name: "index_emails_on_person_id"
   end
 
   create_table "people", force: :cascade do |t|
@@ -51,14 +47,11 @@ ActiveRecord::Schema.define(version: 2020_08_25_113038) do
   create_table "phones", force: :cascade do |t|
     t.string "phone_number"
     t.text "comment"
-    t.bigint "person_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "person_id", null: false
     t.index ["person_id"], name: "index_phones_on_person_id"
   end
 
-  add_foreign_key "addresses", "people"
-  add_foreign_key "emails", "people"
   add_foreign_key "phones", "people"
-
 end
