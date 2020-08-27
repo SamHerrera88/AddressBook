@@ -7,7 +7,7 @@ RSpec.describe "addresses/show", type: :view do
       town: "Town",
       zipcode: "Zipcode",
       state: "State",
-      country: "Country"
+      country: "Country",
       person: nil
     ))
   end

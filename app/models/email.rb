@@ -1,6 +1,6 @@
 class Email < ApplicationRecord
     belongs_to :person
 
-    validates :address, presence: true
+    validates :email_address, presence: true
 
 end

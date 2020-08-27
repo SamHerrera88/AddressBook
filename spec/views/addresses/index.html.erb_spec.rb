@@ -8,7 +8,7 @@ RSpec.describe "addresses/index", type: :view do
         town: "Town",
         zipcode: "Zipcode",
         state: "State",
-        country: "Country"
+        country: "Country",
         person: nil
       ),
       Address.create!(
@@ -16,7 +16,7 @@ RSpec.describe "addresses/index", type: :view do
         town: "Town",
         zipcode: "Zipcode",
         state: "State",
-        country: "Country"
+        country: "Country",
         person: nil
       )
     ])
