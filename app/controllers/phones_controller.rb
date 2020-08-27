@@ -1,5 +1,6 @@
 class PhonesController < ApplicationController
   before_action :set_phone, only: [:show, :edit, :update, :destroy]
+  before_action :set_person
 
   # GET /phones
   # GET /phones.json
@@ -28,7 +29,7 @@ class PhonesController < ApplicationController
 
     respond_to do |format|
       if @phone.save
-        format.html { redirect_to @phone, notice: 'Phone was successfully created.' }
+        format.html { redirect_to @person, notice: "Phone was successfully created." }
         format.json { render :show, status: :created, location: @phone }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class PhonesController < ApplicationController
   def update
     respond_to do |format|
       if @phone.update(phone_params)
-        format.html { redirect_to @phone, notice: 'Phone was successfully updated.' }
+        format.html { redirect_to @person, notice: "Phone was successfully updated." }
         format.json { render :show, status: :ok, location: @phone }
       else
         format.html { render :edit }
@@ -56,7 +57,7 @@ class PhonesController < ApplicationController
   def destroy
     @phone.destroy
     respond_to do |format|
-      format.html { redirect_to phones_url, notice: 'Phone was successfully destroyed.' }
+      format.html { redirect_to @person, notice: "Phone was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -69,6 +70,10 @@ class PhonesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def phone_params
-      params.require(:phone).permit(:phone_number, :comment)
+      params.require(:phone).permit(:phone_number, :comment, :person_id)
+    end
+
+    def set_person
+      @person = Person.find(params[:person_id])
     end
 end
