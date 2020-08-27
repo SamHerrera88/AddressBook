@@ -1,0 +1,7 @@
+<tr>
+  <td><%= email.address %></td>
+  <td><%= email.comment %></td>
+  <td><%= link_to 'Show', [@person, email] %></td>
+  <td><%= link_to 'Edit', edit_person_email_path(@person, email) %></td>
+  <td><%= link_to 'Destroy', [@person, email], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>
