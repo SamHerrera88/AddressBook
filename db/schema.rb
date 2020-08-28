@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2020_08_27_205116) do
     t.string "first_name"
     t.string "middle_name"
     t.string "last_name"
-    t.integer "ssn"
+    t.string "ssn"
     t.date "date_of_birth"
     t.text "comment"
     t.datetime "created_at", precision: 6, null: false
@@ -56,6 +56,8 @@ ActiveRecord::Schema.define(version: 2020_08_27_205116) do
     t.bigint "person_id", null: false
     t.index ["person_id"], name: "index_phones_on_person_id"
   end
-
+  
+  add_foreign_key "addresses", "people"
+  add_foreign_key "emails", "people"
   add_foreign_key "phones", "people"
 end

@@ -13,35 +13,40 @@
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/phones", type: :request do
+  let(:person) { FactoryBot.create(:person) }
   # Phone. As you add validations to Phone, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {
+      number: "000000000",
+      person_id: person.id,
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {
+      number: nil,
+      person_id: nil,
+    }
   }
 
   describe "GET /index" do
     it "renders a successful response" do
-      Phone.create! valid_attributes
-      get phones_url
-      expect(response).to be_successful
+      skip("Now nested under people#show")
     end
   end
 
   describe "GET /show" do
     it "renders a successful response" do
       phone = Phone.create! valid_attributes
-      get phone_url(phone)
+      get person_phone_url(person, phone)
       expect(response).to be_successful
     end
   end
 
   describe "GET /new" do
     it "renders a successful response" do
-      get new_phone_url
+      get new_person_phone_url(person)
       expect(response).to be_successful
     end
   end
@@ -49,7 +54,7 @@ RSpec.describe "/phones", type: :request do
   describe "GET /edit" do
     it "render a successful response" do
       phone = Phone.create! valid_attributes
-      get edit_phone_url(phone)
+      get edit_person_phone_url(person, phone)
       expect(response).to be_successful
     end
   end
@@ -58,25 +63,25 @@ RSpec.describe "/phones", type: :request do
     context "with valid parameters" do
       it "creates a new Phone" do
         expect {
-          post phones_url, params: { phone: valid_attributes }
+          post person_phones_url(person), params: { phone: valid_attributes }
         }.to change(Phone, :count).by(1)
       end
 
       it "redirects to the created phone" do
-        post phones_url, params: { phone: valid_attributes }
-        expect(response).to redirect_to(phone_url(Phone.last))
+        post person_phones_url(person), params: { phone: valid_attributes }
+        expect(response).to redirect_to(person_url(person))
       end
     end
 
     context "with invalid parameters" do
       it "does not create a new Phone" do
         expect {
-          post phones_url, params: { phone: invalid_attributes }
+          post person_phones_url(person), params: { phone: invalid_attributes }
         }.to change(Phone, :count).by(0)
       end
 
       it "renders a successful response (i.e. to display the 'new' template)" do
-        post phones_url, params: { phone: invalid_attributes }
+        post person_phones_url(person), params: { phone: invalid_attributes }
         expect(response).to be_successful
       end
     end
@@ -85,28 +90,30 @@ RSpec.describe "/phones", type: :request do
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {
+          number: "111222333",
+        }
       }
 
       it "updates the requested phone" do
         phone = Phone.create! valid_attributes
-        patch phone_url(phone), params: { phone: new_attributes }
+        patch person_phone_url(person, phone), params: { phone: new_attributes }
         phone.reload
-        skip("Add assertions for updated state")
+        expect(phone.number).to eq("111222333")
       end
 
       it "redirects to the phone" do
         phone = Phone.create! valid_attributes
-        patch phone_url(phone), params: { phone: new_attributes }
+        patch person_phone_url(person, phone), params: { phone: new_attributes }
         phone.reload
-        expect(response).to redirect_to(phone_url(phone))
+        expect(response).to redirect_to(person_url(person))
       end
     end
 
     context "with invalid parameters" do
       it "renders a successful response (i.e. to display the 'edit' template)" do
         phone = Phone.create! valid_attributes
-        patch phone_url(phone), params: { phone: invalid_attributes }
+        patch person_phone_url(person, phone), params: { phone: invalid_attributes }
         expect(response).to be_successful
       end
     end
@@ -116,14 +123,14 @@ RSpec.describe "/phones", type: :request do
     it "destroys the requested phone" do
       phone = Phone.create! valid_attributes
       expect {
-        delete phone_url(phone)
+        delete person_phone_url(person, phone)
       }.to change(Phone, :count).by(-1)
     end
 
     it "redirects to the phones list" do
       phone = Phone.create! valid_attributes
-      delete phone_url(phone)
-      expect(response).to redirect_to(phones_url)
+      delete person_phone_url(person, phone)
+      expect(response).to redirect_to(person_url(person))
     end
   end
 end

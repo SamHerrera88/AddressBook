@@ -16,11 +16,17 @@ RSpec.describe "/people", type: :request do
   # Person. As you add validations to Person, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {
+      first_name: "Jon",
+      last_name: "Doe",
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {
+      firs_tname: nil,
+      last_name: nil,
+    }
   }
 
   describe "GET /index" do
@@ -85,14 +91,18 @@ RSpec.describe "/people", type: :request do
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {
+          first_name: "John",
+          last_name: "Smith",
+        }
       }
 
       it "updates the requested person" do
         person = Person.create! valid_attributes
         patch person_url(person), params: { person: new_attributes }
         person.reload
-        skip("Add assertions for updated state")
+        expect(person.first_name).to eq("John")
+        expect(person.last_name).to eq("Smith")
       end
 
       it "redirects to the person" do

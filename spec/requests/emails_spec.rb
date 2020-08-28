@@ -13,35 +13,40 @@
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/emails", type: :request do
+  let(:person) { FactoryBot.create(:person) }
   # Email. As you add validations to Email, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {
+      address: "email@example.com",
+      person_id: person.id,
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {
+      address: nil,
+      person_id: nil,
+    }
   }
 
   describe "GET /index" do
     it "renders a successful response" do
-      Email.create! valid_attributes
-      get emails_url
-      expect(response).to be_successful
+      skip("Now nested under people#show")
     end
   end
 
   describe "GET /show" do
     it "renders a successful response" do
       email = Email.create! valid_attributes
-      get email_url(email)
+      get person_email_url(person, email)
       expect(response).to be_successful
     end
   end
 
   describe "GET /new" do
     it "renders a successful response" do
-      get new_email_url
+      get new_person_email_url(person)
       expect(response).to be_successful
     end
   end
@@ -49,7 +54,7 @@ RSpec.describe "/emails", type: :request do
   describe "GET /edit" do
     it "render a successful response" do
       email = Email.create! valid_attributes
-      get edit_email_url(email)
+      get edit_person_email_url(person, email)
       expect(response).to be_successful
     end
   end
@@ -58,25 +63,25 @@ RSpec.describe "/emails", type: :request do
     context "with valid parameters" do
       it "creates a new Email" do
         expect {
-          post emails_url, params: { email: valid_attributes }
+          post person_emails_url(person), params: { email: valid_attributes }
         }.to change(Email, :count).by(1)
       end
 
       it "redirects to the created email" do
-        post emails_url, params: { email: valid_attributes }
-        expect(response).to redirect_to(email_url(Email.last))
+        post person_emails_url(person), params: { email: valid_attributes }
+        expect(response).to redirect_to(person_url(person))
       end
     end
 
     context "with invalid parameters" do
       it "does not create a new Email" do
         expect {
-          post emails_url, params: { email: invalid_attributes }
+          post person_emails_url(person), params: { email: invalid_attributes }
         }.to change(Email, :count).by(0)
       end
 
       it "renders a successful response (i.e. to display the 'new' template)" do
-        post emails_url, params: { email: invalid_attributes }
+        post person_emails_url(person), params: { email: invalid_attributes }
         expect(response).to be_successful
       end
     end
@@ -85,28 +90,30 @@ RSpec.describe "/emails", type: :request do
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {
+          address: "changed@example.com",
+        }
       }
 
       it "updates the requested email" do
         email = Email.create! valid_attributes
-        patch email_url(email), params: { email: new_attributes }
+        patch person_email_url(person, email), params: { email: new_attributes }
         email.reload
-        skip("Add assertions for updated state")
+        expect(email.address).to eq("changed@example.com")
       end
 
       it "redirects to the email" do
         email = Email.create! valid_attributes
-        patch email_url(email), params: { email: new_attributes }
+        patch person_email_url(person, email), params: { email: new_attributes }
         email.reload
-        expect(response).to redirect_to(email_url(email))
+        expect(response).to redirect_to(person_url(person))
       end
     end
 
     context "with invalid parameters" do
       it "renders a successful response (i.e. to display the 'edit' template)" do
         email = Email.create! valid_attributes
-        patch email_url(email), params: { email: invalid_attributes }
+        patch person_email_url(person, email), params: { email: invalid_attributes }
         expect(response).to be_successful
       end
     end
@@ -116,14 +123,14 @@ RSpec.describe "/emails", type: :request do
     it "destroys the requested email" do
       email = Email.create! valid_attributes
       expect {
-        delete email_url(email)
+        delete person_email_url(person, email)
       }.to change(Email, :count).by(-1)
     end
 
     it "redirects to the emails list" do
       email = Email.create! valid_attributes
-      delete email_url(email)
-      expect(response).to redirect_to(emails_url)
+      delete person_email_url(person, email)
+      expect(response).to redirect_to(person_url(person))
     end
   end
 end

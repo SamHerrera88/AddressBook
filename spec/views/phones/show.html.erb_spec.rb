@@ -2,10 +2,11 @@ require 'rails_helper'
 
 RSpec.describe "phones/show", type: :view do
   before(:each) do
+    @person = FactoryBot.create(:person)
     @phone = assign(:phone, Phone.create!(
       phone_number: "Phone Number",
       comment: "MyText",
-      person: nil
+      person: @person,
     ))
   end
 

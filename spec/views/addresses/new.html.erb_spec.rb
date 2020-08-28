@@ -2,20 +2,21 @@ require 'rails_helper'
 
 RSpec.describe "addresses/new", type: :view do
   before(:each) do
+    @person = FactoryBot.create(:person)
     assign(:address, Address.new(
       street: "MyString",
       town: "MyString",
       zipcode: "MyString",
       state: "MyString",
       country: "MyString",
-      person: nil
+      person: @person,
     ))
   end
 
   it "renders new address form" do
     render
 
-    assert_select "form[action=?][method=?]", addresses_path, "post" do
+    assert_select "form[action=?][method=?]", person_addresses_path(@person), "post" do
 
       assert_select "input[name=?]", "address[street]"
 

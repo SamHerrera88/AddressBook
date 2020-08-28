@@ -2,20 +2,21 @@ require 'rails_helper'
 
 RSpec.describe "addresses/edit", type: :view do
   before(:each) do
+    @person = FactoryBot.create(:person)
     @address = assign(:address, Address.create!(
       street: "MyString",
       town: "MyString",
       zipcode: "MyString",
       state: "MyString",
       country: "MyString",
-      person: nil
+      person: @person,
     ))
   end
 
   it "renders the edit address form" do
     render
 
-    assert_select "form[action=?][method=?]", address_path(@address), "post" do
+    assert_select "form[action=?][method=?]", person_address_path(@person, @address), "post" do
 
       assert_select "input[name=?]", "address[street]"
 

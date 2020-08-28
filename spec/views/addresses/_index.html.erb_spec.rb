@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "addresses/index", type: :view do
   before(:each) do
+    @person = FactoryBot.create(:person)
     assign(:addresses, [
       Address.create!(
         street: "Street",
@@ -9,7 +10,7 @@ RSpec.describe "addresses/index", type: :view do
         zipcode: "Zipcode",
         state: "State",
         country: "Country",
-        person: nil
+        person: @person
       ),
       Address.create!(
         street: "Street",
@@ -17,7 +18,7 @@ RSpec.describe "addresses/index", type: :view do
         zipcode: "Zipcode",
         state: "State",
         country: "Country",
-        person: nil
+        person: @person,
       )
     ])
   end

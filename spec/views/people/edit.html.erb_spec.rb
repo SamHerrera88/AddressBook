@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "people/edit", type: :view do
   before(:each) do
     @person = assign(:person, Person.create!(
-      saluation: "MyString",
+      salutation: "MyString",
       first_name: "MyString",
       middle_name: "MyString",
       last_name: "MyString",
@@ -17,7 +17,7 @@ RSpec.describe "people/edit", type: :view do
 
     assert_select "form[action=?][method=?]", person_path(@person), "post" do
 
-      assert_select "input[name=?]", "person[saluation]"
+      assert_select "input[name=?]", "person[salutation]"
 
       assert_select "input[name=?]", "person[first_name]"
 

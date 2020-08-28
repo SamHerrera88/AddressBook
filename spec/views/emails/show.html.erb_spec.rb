@@ -2,10 +2,11 @@ require 'rails_helper'
 
 RSpec.describe "emails/show", type: :view do
   before(:each) do
+    @person = FactoryBot.create(:person)
     @email = assign(:email, Email.create!(
       email_address: "Email Address",
       comment: "MyText",
-      person: nil
+      person: @person,
     ))
   end
 

@@ -2,13 +2,14 @@ require 'rails_helper'
 
 RSpec.describe "addresses/show", type: :view do
   before(:each) do
+    @person = FactoryBot.create(:person)
     @address = assign(:address, Address.create!(
       street: "Street",
       town: "Town",
       zipcode: "Zipcode",
       state: "State",
       country: "Country",
-      person: nil
+      person: @person,
     ))
   end
 
