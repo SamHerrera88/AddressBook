@@ -1,6 +1,14 @@
 language: ruby
 rvm:
  - 2.7.1
+
+install:
+    - bundle install
+    - nvm install node
+    - node -v
+    - npm i -g yarn
+    - yarn install
+
 before_install:
     gem install bundler
     
