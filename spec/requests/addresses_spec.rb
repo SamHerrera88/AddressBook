@@ -127,7 +127,7 @@ RSpec.describe "/addresses", type: :request do
 
     it "redirects to the addresses list" do
       address = Address.create! valid_attributes
-      delete person_address_url(address)
+      delete person_address_url(person, address)
       expect(response).to redirect_to(person_url(person))
     end
   end

@@ -18,14 +18,14 @@ RSpec.describe "/emails", type: :request do
   # adjust the attributes here as well.
   let(:valid_attributes) {
     {
-      address: "email@example.com",
+      email_address: "email@example.com",
       person_id: person.id,
     }
   }
 
   let(:invalid_attributes) {
     {
-      address: nil,
+      email_address: nil,
       person_id: nil,
     }
   }
@@ -91,7 +91,7 @@ RSpec.describe "/emails", type: :request do
     context "with valid parameters" do
       let(:new_attributes) {
         {
-          address: "changed@example.com",
+          email_address: "changed@example.com",
         }
       }
 
@@ -99,7 +99,7 @@ RSpec.describe "/emails", type: :request do
         email = Email.create! valid_attributes
         patch person_email_url(person, email), params: { email: new_attributes }
         email.reload
-        expect(email.address).to eq("changed@example.com")
+        expect(email.email_address).to eq("changed@example.com")
       end
 
       it "redirects to the email" do

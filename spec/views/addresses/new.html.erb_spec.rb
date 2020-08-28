@@ -26,7 +26,7 @@ RSpec.describe "addresses/new", type: :view do
 
       assert_select "input[name=?]", "address[state]"
 
-      assert_select "input[name=?]", "address[country]"
+      assert_select "select[name=?]", "address[country]"
 
       assert_select "input[name=?]", "address[person_id]"
     end

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "emails/index", type: :view do
+RSpec.describe "emails/_index", type: :view do
   before(:each) do
     @person = FactoryBot.create(:person)
     assign(:emails, [

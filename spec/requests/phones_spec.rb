@@ -18,14 +18,14 @@ RSpec.describe "/phones", type: :request do
   # adjust the attributes here as well.
   let(:valid_attributes) {
     {
-      number: "000000000",
+      phone_number: "000000000",
       person_id: person.id,
     }
   }
 
   let(:invalid_attributes) {
     {
-      number: nil,
+      phone_number: nil,
       person_id: nil,
     }
   }
@@ -91,7 +91,7 @@ RSpec.describe "/phones", type: :request do
     context "with valid parameters" do
       let(:new_attributes) {
         {
-          number: "111222333",
+          phone_number: "111222333",
         }
       }
 
@@ -99,7 +99,7 @@ RSpec.describe "/phones", type: :request do
         phone = Phone.create! valid_attributes
         patch person_phone_url(person, phone), params: { phone: new_attributes }
         phone.reload
-        expect(phone.number).to eq("111222333")
+        expect(phone.phone_number).to eq("111222333")
       end
 
       it "redirects to the phone" do

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "phones/index", type: :view do
+RSpec.describe "phones/_index", type: :view do
   before(:each) do
     @person = FactoryBot.create(:person)
     assign(:phones, [
