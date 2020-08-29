@@ -6,7 +6,7 @@
   <td><%= person.ssn %></td>
   <td><%= person.date_of_birth %></td>
   <td><%= person.comment %></td>
-  <td><%= link_to 'Show', person %></td>
-  <td><%= link_to 'Edit', edit_person_path(person) %></td>
-  <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <td><%= link_to 'Show', person, class: "btn btn-primary" %></td>
+  <td><%= link_to 'Edit', edit_person_path(person), class: "btn btn-primary" %></td>
+  <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
 </tr>

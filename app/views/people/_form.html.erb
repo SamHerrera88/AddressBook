@@ -13,38 +13,38 @@
 
   <div class="field">
     <%= form.label :salutation %>
-    <%= form.select :salutation, [["Mrs.", "Mrs."],["Ms.", "Ms."],["Mr.", "Mr."]] %>
+    <%= form.select :salutation, [["Mrs.", "Mrs."],["Ms.", "Ms."],["Mr.", "Mr."]], {}, class: "form-control" %>
 
   </div>
 
   <div class="field">
     <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
+    <%= form.text_field :first_name, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :middle_name %>
-    <%= form.text_field :middle_name %>
+    <%= form.text_field :middle_name, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
+    <%= form.text_field :last_name, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :ssn %>
-    <%= form.text_field :ssn %>
+    <%= form.text_field :ssn, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :date_of_birth %>
-    <%= form.date_select :date_of_birth, start_year: 1940 %>
+    <%= form.date_select :date_of_birth, { start_year: 1940 }, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :comment %>
-    <%= form.text_area :comment %>
+    <%= form.text_area :comment, class: "form-control" %>
   </div>
 
   <div class="actions">
