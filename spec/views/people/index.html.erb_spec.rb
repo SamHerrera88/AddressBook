@@ -8,7 +8,7 @@ RSpec.describe "people/index", type: :view do
         first_name: "First Name",
         middle_name: "Middle Name",
         last_name: "Last Name",
-        ssn: "SSN",
+        ssn: 1234,
         comment: "MyText"
       ),
       Person.create!(
@@ -16,7 +16,7 @@ RSpec.describe "people/index", type: :view do
         first_name: "First Name",
         middle_name: "Middle Name",
         last_name: "Last Name",
-        ssn: "SSN",
+        ssn: 1234,
         comment: "MyText"
       )
     ])
@@ -28,7 +28,7 @@ RSpec.describe "people/index", type: :view do
     assert_select "tr>td", text: "First Name".to_s, count: 2
     assert_select "tr>td", text: "Middle Name".to_s, count: 2
     assert_select "tr>td", text: "Last Name".to_s, count: 2
-    assert_select "tr>td", text: "SSN".to_s, count: 2
+    assert_select "tr>td", text: 1234.to_s, count: 2
     assert_select "tr>td", text: "MyText".to_s, count: 2
   end
 end
