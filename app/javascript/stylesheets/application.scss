@@ -1,2 +1,8 @@
 @import "~bootstrap/scss/bootstrap"; // never forget the semicolon at the end
 @import "./_custom";
+@import "stylesheets/home";
+
+.h1 {
+    display: flex;
+    text-emphasis-color: red;
+  }

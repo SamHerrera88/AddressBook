@@ -1,13 +1,8 @@
-.header {
-    display: block;
-    background-color: red;
-  }
-
-  .cut-text {
+.cut-text {
     $random-text: 'stolen hour';
     position: relative;
     text-transform: uppercase;
-    font-size: $extra-large;
+    font-size: x-large;
     color: transparent;
     font-weight: 900;
     font-family: 'Catamaran', sans-serif;

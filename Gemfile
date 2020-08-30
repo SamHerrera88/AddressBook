@@ -28,6 +28,8 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'countries' 
 
+gem 'bootstrap', '~> 5.0.0.alpha1'
+
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
