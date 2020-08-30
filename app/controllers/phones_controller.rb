@@ -31,9 +31,11 @@ class PhonesController < ApplicationController
       if @phone.save
         format.html { redirect_to @person, notice: "Phone was successfully created." }
         format.json { render :show, status: :created, location: @phone }
+        
       else
         format.html { render :new }
         format.json { render json: @phone.errors, status: :unprocessable_entity }
+        format.js { render partial: "form", locals: { phone_number: @phone } }
       end
     end
   end
@@ -48,6 +50,7 @@ class PhonesController < ApplicationController
       else
         format.html { render :edit }
         format.json { render json: @phone.errors, status: :unprocessable_entity }
+        format.js { render partial: "form", locals: { phone_number: @phone } }
       end
     end
   end

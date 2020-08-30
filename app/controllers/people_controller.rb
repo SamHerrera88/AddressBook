@@ -33,6 +33,7 @@ class PeopleController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @person.errors, status: :unprocessable_entity }
+        format.js { render partial: "form", locals: { person: @person } }
       end
     end
   end
@@ -47,6 +48,7 @@ class PeopleController < ApplicationController
       else
         format.html { render :edit }
         format.json { render json: @person.errors, status: :unprocessable_entity }
+        format.js { render partial: "form", locals: { person: @person } }
       end
     end
   end
