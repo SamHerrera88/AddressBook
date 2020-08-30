@@ -1,5 +1,4 @@
-const { environment } = require('@rails/webpacker')
-
+import { environment } from '@rails/webpacker'
 const webpack = require('webpack')
 environment.plugins.append('Provide',
   new webpack.ProvidePlugin({
