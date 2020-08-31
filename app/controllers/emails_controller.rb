@@ -35,6 +35,8 @@ class EmailsController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @email.errors, status: :unprocessable_entity }
+        format.js { render partial: "form", locals: { email: @email } }
+
       end
     end
   end
@@ -49,6 +51,7 @@ class EmailsController < ApplicationController
       else
         format.html { render :edit }
         format.json { render json: @email.errors, status: :unprocessable_entity }
+        format.js { render partial: "form", locals: { email: @email } }
       end
     end
   end

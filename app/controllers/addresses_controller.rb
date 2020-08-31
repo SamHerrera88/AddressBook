@@ -35,6 +35,7 @@ class AddressesController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @address.errors, status: :unprocessable_entity }
+        format.js { render partial: "form", locals: { address: @address } }
       end
     end
   end
@@ -49,6 +50,7 @@ class AddressesController < ApplicationController
       else
         format.html { render :edit }
         format.json { render json: @address.errors, status: :unprocessable_entity }
+        format.js { render partial: "form", locals: { address: @address } }
       end
     end
   end

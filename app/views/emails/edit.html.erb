@@ -1,6 +1,8 @@
 <h1>Editing Email</h1>
 
-<%= render 'form', email: @email %>
+<div id="email">
+  <%= render 'form', email: @email %>
+</div>
 
 <%= link_to 'Show', [@person, @email]  %> |
 <%= link_to 'Back', @person %>
